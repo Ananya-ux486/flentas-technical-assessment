@@ -34,6 +34,11 @@ Migrated to a highly available architecture with Application Load Balancer, Auto
 
 **Status:** ✅ Completed
 
+### Task 4: Billing & Free Tier Cost Monitoring
+Configured CloudWatch billing alarms and Free Tier usage alerts to monitor AWS costs and prevent unexpected charges. Set up email notifications for budget thresholds.
+
+**Status:** ✅ Completed
+
 ---
 
 ## Notes

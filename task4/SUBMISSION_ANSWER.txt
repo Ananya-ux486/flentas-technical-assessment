@@ -1,0 +1,11 @@
+Cost monitoring is super important when you're starting with AWS because it's really easy to accidentally rack up charges without realizing it. I've set up a CloudWatch billing alarm that alerts me when my estimated charges cross ₹100 (about $1.20). I also enabled Free Tier usage alerts so I get notified when I'm approaching the limits on services like EC2, S3, or data transfer. This helps me catch any mistakes early, like forgetting to terminate an instance or leaving a NAT Gateway running overnight.
+
+The main things that cause sudden bill increases are usually simple mistakes. Forgetting to delete resources after testing is the biggest one - services like NAT Gateways ($32/month) and Load Balancers ($16/month) keep charging even when you're not actively using them. Data transfer out of AWS also adds up if you're serving a lot of traffic. Another common issue is exceeding Free Tier limits without noticing. For example, Free Tier gives you 750 hours of t2.micro/t3.micro per month, but if you run two instances 24/7, that's 1,440 hours, so you'd be paying for the extra 690 hours. EBS volumes also continue to cost money even when instances are stopped, and if you're taking snapshots regularly without cleaning up old ones, storage costs creep up over time.
+
+Screenshots:
+Billing Alarm: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task4/screenshots/billing-alarm.png
+Free Tier Alerts: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task4/screenshots/free-tier-alerts.png
+
+GitHub Repository: https://github.com/Ananya-ux486/flentas-technical-assessment
+
+Setting up these alerts gives me peace of mind. I know that if something goes wrong or I forget to clean up resources, I'll get an email before the bill gets out of hand. It's especially helpful during this assessment since I'm running multiple services across different tasks. The alarm acts as a safety net while I'm learning and experimenting with AWS.
