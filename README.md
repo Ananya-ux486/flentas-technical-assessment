@@ -29,6 +29,11 @@ Deployed an EC2 instance with Nginx web server hosting a resume website. Impleme
 
 **Status:** ✅ Completed
 
+### Task 3: High Availability + Auto Scaling
+Migrated to a highly available architecture with Application Load Balancer, Auto Scaling Group (2-4 instances), and multi-AZ deployment for fault tolerance and automatic scaling.
+
+**Status:** ✅ Completed
+
 ---
 
 ## Notes

@@ -1,0 +1,13 @@
+I migrated the single EC2 instance setup to a highly available architecture by creating an Application Load Balancer in the public subnets and moving EC2 instances to private subnets. The ALB distributes incoming traffic across multiple availability zones (us-east-1a and us-east-1b) to ensure the application remains available even if one zone fails. I configured an Auto Scaling Group with a minimum of 2 instances and maximum of 4 instances, which automatically maintains the desired capacity and replaces unhealthy instances. The traffic flow is: Internet → ALB (public subnets) → Target Group → EC2 instances (private subnets) → NAT Gateway for outbound access. This architecture provides fault tolerance, automatic scaling, and improved security by isolating application servers from direct internet access.
+
+Screenshots:
+ALB Configuration: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/alb.png
+Target Group: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/target-group.png
+Auto Scaling Group: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/asg.png
+EC2 Instances: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/ec2-instances.png
+Website: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/website.png
+
+GitHub Repository: https://github.com/Ananya-ux486/flentas-technical-assessment
+Terraform Code: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/main.tf
+
+The architecture ensures high availability through multi-AZ deployment, automatic health checks, and elastic scaling. The ALB performs health checks every 30 seconds and only routes traffic to healthy instances. If an instance fails, the Auto Scaling Group automatically launches a replacement. This setup can handle traffic spikes by scaling up to 4 instances and scales down during low traffic to optimize costs.
