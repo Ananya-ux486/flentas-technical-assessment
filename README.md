@@ -39,6 +39,11 @@ Configured CloudWatch billing alarms and Free Tier usage alerts to monitor AWS c
 
 **Status:** ✅ Completed
 
+### Task 5: AWS Architecture Diagram
+Designed a comprehensive architecture diagram for a highly scalable web application capable of handling 10,000 concurrent users with multi-tier networking, auto-scaling, caching, and security components.
+
+**Status:** ✅ Completed
+
 ---
 
 ## Notes
