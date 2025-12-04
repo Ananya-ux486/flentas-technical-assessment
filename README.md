@@ -24,6 +24,11 @@ Created a complete VPC infrastructure with public and private subnets, Internet 
 
 **Status:** ✅ Completed
 
+### Task 2: EC2 Static Website Hosting
+Deployed an EC2 instance with Nginx web server hosting a resume website. Implemented security hardening with encrypted EBS, IMDSv2, and proper security group configuration.
+
+**Status:** ✅ Completed
+
 ---
 
 ## Notes

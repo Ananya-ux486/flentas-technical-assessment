@@ -1,0 +1,15 @@
+I launched a t3.micro EC2 instance in the public subnet created in Task 1 and automated the entire setup using a user data script. The script installs Nginx web server and configures it to serve my resume on port 80. For hosting the resume, I used an S3 bucket to store the PDF file, which the EC2 instance downloads during initialization. The website is accessible via the instance's public IP address at http://13.223.89.22.
+
+For security hardening, I implemented several AWS best practices. The EBS volume is encrypted using AWS managed keys, and I enforced IMDSv2 to prevent SSRF attacks. The security group follows the principle of least privilege, allowing only HTTP traffic on port 80 from anywhere and SSH on port 22 for administrative access. I disabled the local firewall since security groups provide stateful filtering at the network level. The instance uses the latest Amazon Linux 2023 AMI with automatic security updates applied during initialization.
+
+Screenshots:
+EC2 Instance: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/screenshots/ec2-instance.png
+Security Groups: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/screenshots/security-groups.png
+Website: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/screenshots/website.png
+S3 Bucket: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/screenshots/s3-bucket.png
+
+GitHub Repository: https://github.com/Ananya-ux486/flentas-technical-assessment
+Terraform Code: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/main.tf
+Setup Script: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task2/setup-with-pdf.sh
+
+The infrastructure uses Terraform for reproducibility. The EC2 instance automatically downloads the resume PDF from S3 during boot and serves it through Nginx. The website includes a landing page with download options and an embedded PDF viewer for easy access to the resume.
