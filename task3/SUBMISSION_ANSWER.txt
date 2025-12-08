@@ -1,0 +1,13 @@
+For this task, I took the single EC2 setup from Task 2 and transformed it into a highly available architecture. I created an Application Load Balancer in the public subnets to handle incoming traffic, and moved the EC2 instances into private subnets for better security. The ALB spreads traffic across two availability zones (us-east-1a and us-east-1b), so if one zone goes down, the application keeps running without any interruption. I set up an Auto Scaling Group that maintains between 2 to 4 instances depending on the load. It automatically keeps the desired number of instances running and replaces any that become unhealthy. The traffic path works like this: users hit the ALB from the internet, which forwards requests to the Target Group, then to EC2 instances in private subnets, and those instances use the NAT Gateway when they need to reach out to the internet.
+
+Screenshots:
+ALB Configuration: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/alb.png
+Target Group: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/target-group.png
+Auto Scaling Group: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/asg.png
+EC2 Instances: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/ec2-instances.png
+Website: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/screenshots/website.png
+
+GitHub Repository: https://github.com/Ananya-ux486/flentas-technical-assessment
+Terraform Code: https://github.com/Ananya-ux486/flentas-technical-assessment/blob/main/task3/main.tf
+
+What I really like about this setup is how it handles failures gracefully. The ALB checks instance health every 30 seconds and only sends traffic to healthy ones. If an instance crashes or becomes unresponsive, the Auto Scaling Group notices and spins up a replacement automatically. During high traffic periods, it can scale up to 4 instances to handle the load, and when things quiet down, it scales back to 2 instances to save on costs. This gives us both reliability and cost efficiency.
